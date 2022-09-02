@@ -1,21 +1,20 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.13;
 
-// Why? - Security
+// Why? - Security and bugs
 
 // Bad
 contract ComplexContract {
     // Complex code
 
     // Calling many functions and contracts
-    function callingManyFunctionsAndContracts() external {
-        // Call A.foo()
-        // func1();
-        // func2();
-        // Call B.bar()
-        // func3();
-        // Call C.baz()
-        // ...
+    function callingManyFunctionsAndContracts() external { // Call A.foo()
+            // func1();
+            // func2();
+            // Call B.bar()
+            // func3();
+            // Call C.baz()
+            // ...
     }
 
     // Do many things
@@ -25,19 +24,17 @@ contract ComplexContract {
     function liquidate() external {}
 
     // Having many view functions
-    function getPrice() external view returns (uint) {}
-    function getHistoricalPrice() external view returns (uint) {}
-    function getAveragePrice() external view returns (uint) {}
+    function getPrice() external view returns (uint256) {}
+    function getHistoricalPrice() external view returns (uint256) {}
+    function getAveragePrice() external view returns (uint256) {}
 }
 
 // Good
-contract SimpleContract {
-    // Simple code
+contract SimpleContract { // Simple code
     // Do as little as possible - YAGNI - You aren't gonna need it
+// Good - Splitting contracts - core and view
 }
 
-// Good - Splitting contracts - core and view
 contract CoreContract {}
 
 contract ViewContract {}
-

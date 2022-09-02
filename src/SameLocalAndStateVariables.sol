@@ -2,22 +2,20 @@
 pragma solidity 0.8.13;
 
 contract SameLocalAndStateVariables {
-    uint public totalSupply; 
-    
+    uint256 public totalSupply;
+
     function bad() external {
-        uint totaSupply = 123;
+        uint256 totaSupply = 123;
 
         //  More code here...
 
         // I want to update state variable
         // but local variable is updated
-        totalSupply = 456;
-
-        // Also no compiler warning
+        totalSupply = 456; 
     }
 
     function good() external {
-        uint _totalSupply = 123;
+        uint256 _totalSupply = 123;
 
         //  More code here...
 
@@ -27,8 +25,12 @@ contract SameLocalAndStateVariables {
     // Bonus
     // Pure functions don't read state variables so there is no possibility
     // of mixing up local and state variables.
-    function somePureFunc(uint x, uint y) external pure returns (uint) {
-        uint totalSupply = x + y;
+    function somePureFunc(uint256 x, uint256 y)
+        external
+        pure
+        returns (uint256)
+    {
+        uint256 totalSupply = x + y;
         return totalSupply;
     }
 }

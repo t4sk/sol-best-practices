@@ -3,10 +3,14 @@ pragma solidity 0.8.13;
 
 contract SecurityOverGas {
     // Sum nums - save gas
-    function bad(uint[] calldata nums) external pure returns (uint total) {
-        uint len = nums.length;
+    function bad(uint256[] calldata nums)
+        external
+        pure
+        returns (uint256 total)
+    {
+        uint256 len = nums.length;
 
-        for (uint i = 0; i < len;) {
+        for (uint256 i = 0; i < len;) {
             total += nums[i];
             unchecked {
                 ++i;
@@ -15,10 +19,14 @@ contract SecurityOverGas {
     }
 
     // Prioritize code readability + security > gas cost
-    function good(uint[] calldata nums) external pure returns (uint total) {
-        uint len = nums.length;
+    function good(uint256[] calldata nums)
+        external
+        pure
+        returns (uint256 total)
+    {
+        uint256 len = nums.length;
 
-        for (uint i = 0; i < len; ++i) {
+        for (uint256 i = 0; i < len; ++i) {
             total += nums[i];
         }
     }

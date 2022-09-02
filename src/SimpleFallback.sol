@@ -5,15 +5,13 @@ pragma solidity 0.8.13;
 
 // Bad
 contract ComplexFallback {
-    fallback() external payable {
-        // Do many things here
-        // Complex code
+    fallback() external payable { // Do many things here
+            // Complex code
     }
-} 
+}
 
 // Good
 contract SimpleFallback {
-    fallback() external payable {
-        // Simple code, for example - only log
+    fallback() external payable { // Simple code, for example - only log
     }
-} 
+}

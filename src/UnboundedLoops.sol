@@ -1,12 +1,14 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.13;
 
+// Unbounded loops - No upper limit to number of loops
+
 // Why? - There is a limit on the amount of gas that can be used in a block.
 // Unbounded loops may consume more gas than the block gas limit.
 
 contract Loop {
     address[] public accounts;
-    mapping(address => uint) public balances;
+    mapping(address => uint256) public balances;
 
     function join() external {
         accounts.push(msg.sender);
@@ -14,14 +16,14 @@ contract Loop {
 
     function bad() external {
         // Increment all accounts' balance
-        for (uint i; i < accounts.length; i++) {
+        for (uint256 i; i < accounts.length; i++) {
             balances[accounts[i]] += 1;
         }
     }
 
-    function good(uint start, uint end) external {
+    function good(uint256 start, uint256 end) external {
         // Increment all accounts' balance
-        for (uint i = start; i < end; i++) {
+        for (uint256 i = start; i < end; i++) {
             balances[accounts[i]] += 10;
         }
     }
