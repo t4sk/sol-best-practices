@@ -6,7 +6,7 @@ pragma solidity 0.8.13;
 // Why? - There is a limit on the amount of gas that can be used in a block.
 // Unbounded loops may consume more gas than the block gas limit.
 
-contract Loop {
+contract UnboundedLoops {
     address[] public accounts;
     mapping(address => uint256) public balances;
 
@@ -26,5 +26,14 @@ contract Loop {
         for (uint256 i = start; i < end; i++) {
             balances[accounts[i]] += 10;
         }
+    }
+
+    function test() external {
+        // Subtle unbounded loop
+        test2(accounts);
+    }
+
+    function test2(address[] memory) public {
+        // More code here
     }
 }
