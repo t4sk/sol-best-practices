@@ -5,7 +5,7 @@ contract SameLocalAndStateVariables {
     uint256 public totalSupply;
 
     function bad() external {
-        uint256 totaSupply = 123;
+        uint256 totalSupply = 123;
 
         //  More code here...
 
