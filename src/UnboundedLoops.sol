@@ -28,6 +28,7 @@ contract UnboundedLoops {
         }
     }
 
+    // forge test --match-path test/UnboundedLoops.t.sol
     function test() external {
         // Subtle unbounded loop
         test2(accounts);
